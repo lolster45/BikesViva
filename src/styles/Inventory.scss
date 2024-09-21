@@ -1,0 +1,153 @@
+
+
+.inventory-page {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    height: auto;
+    width: 100%;
+
+    margin-top: 50px;
+    padding-bottom: 50px;
+
+
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+        color: white;
+
+        //background-color: blue;
+    }
+
+    .input-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+
+        height: 50px;
+        width: 60%;
+        margin-bottom: 80px;
+
+        //background-color: orange;
+
+        input {
+            height: 40px;
+            width: 80%;
+            padding-left: 15px;
+            border: none;
+            border-radius: 50px;
+            outline: none;
+        }
+        .filter-buttons {
+            display: flex;
+            align-items: center;
+            height: 40px;
+            width: 20%;
+            //background-color: green;
+
+            > svg {
+                cursor: pointer;
+                font-size: 2rem;
+                color: white;
+            }
+
+           
+        }
+    }
+    .filter-options-wrap {
+        //display: none;
+        transform: translateY(-70px);
+
+        width: 50%;
+        
+        height: 0px;
+        opacity: 0;
+        visibility: none;
+        transition: all 0.3s ease;
+
+        background-color: purple;
+
+        div {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            padding-left: 15px;
+            height: 40px;
+            margin-bottom: 10px;
+            color: white;
+            background-color: orange;
+
+            &:nth-child(even) {
+                background-color: rgb(134, 51, 182);
+            }
+            &:nth-child(odd) {
+                background-color: rgb(125, 11, 190);
+            }
+        }
+
+        &.active {
+            height: 300px;
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+    
+
+    .inventory-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        justify-items: center;
+
+
+        row-gap: 30px;
+
+        min-width: 90%;
+        max-width: 90%;
+
+        //background-color: blue;
+
+
+        .card {
+            position: relative;
+            height: 340px;
+            width: 300px;
+            color: black;
+            background-color: white;
+            //background-color: orange;
+            img {
+                height: 70%;
+                width: 100%;
+                object-fit: cover;
+            }
+
+            .card-bottom {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                position: relative;
+                padding: 10px;
+                height: 30%;
+                background-color: rgb(231, 231, 231);
+
+                .brand {
+                    font-size: 0.8rem;
+                }
+                .model {
+
+                }
+                .price {
+
+                }
+                .year {
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                }
+
+            }
+        }
+    }
+}
