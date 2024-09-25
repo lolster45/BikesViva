@@ -22,15 +22,12 @@
 
 
 .App {
+    //overflow-y: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
-    //justify-content: center;
-
     min-height: 100vh;
-
     background-color: var(--background-purple);
-
     nav {
         position: relative;
         z-index: 5;
@@ -38,34 +35,28 @@
         align-items: center;
         justify-content: space-between;
         padding: 20px 0px;
-    
         height: 80px;
         width: 90%;
-
-        color: var(--gold-yellow);
-
-        
-    
-        h1 {
-            font-size: 1.8rem;
-        }
-    
+        color: var(--gold-yellow);  
+        a {
+            text-decoration: none;
+            h1 {
+                font-size: 1.8rem;
+                color: var(--gold-yellow);
+            }
+        }  
         div {
             display: flex;
             justify-content: space-between;
             align-items: center;
             width: 30%;
-            
-            //background-color: blue;
-
             span {
                 position: relative;
-
                 a {
                     position: relative;
                     text-decoration: none;
                     font-size: 1rem;
-                    color: var(--gold-yellow);
+                    color: white;
                 }
                 &::after {
                     content: "";
@@ -74,8 +65,8 @@
                     width: 0px;
                     left: 0;
                     bottom: -8px;
-                    background-color: white;
-                    transition: 0.1s;
+                    background-color: var(--gold-yellow);
+                    transition: 0.2s;
                 }
                 &:hover::after {
                     width: 100%;
@@ -83,7 +74,33 @@
             }
             
         }
+        .hamburger-menu {
+            display: none;
+        }
     }
+
+    // .mobile-nav {
+    //     height: 30vh;
+    //     background-color: blue;
+    //     width: 100%;
+
+    //     ul {
+    //         width: 100%;
+    //         list-style: none;
+    //         background-color: red;
+
+    //         li {
+    //             width: 100%;
+
+    //             a {
+    //                 text-decoration: none;
+    //             }
+    //         }
+
+    //     }
+
+    // }
+
 
 
     footer {
@@ -144,6 +161,92 @@
         }
         
     }
+}
 
 
+@media only screen and (max-width: 999px) {
+    .App {
+        nav {
+            > div {
+                display: none;
+            }
+            .hamburger-menu {
+                display: flex;
+                justify-content: flex-end;
+                padding: 0px;
+                width: 100px;
+                .ham {
+                    cursor: pointer;
+                    -webkit-tap-highlight-color: transparent;
+                    transition: transform 400ms;
+                    -moz-user-select: none;
+                    -webkit-user-select: none;
+                    -ms-user-select: none;
+                    user-select: none;
+                }
+                .hamRotate.active {
+                    z-index: 11;
+                    transform: rotate(45deg);
+                    .line {
+                        stroke: white;
+                    }
+                }
+                .hamRotate180.active {
+                    transform: rotate(180deg);
+                }
+                .line {
+                    fill:none;
+                    transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+                    stroke:#ffffff;
+                    stroke-width:5.5;
+                    stroke-linecap:round;
+                }
+                
+                .ham7 .top {
+                    stroke-dasharray: 40 82;
+                }
+                .ham7 .middle {
+                    stroke-dasharray: 40 111;
+                }
+                .ham7 .bottom {
+                    stroke-dasharray: 40 161;
+                }
+                .ham7.active .top {
+                    stroke-dasharray: 17 82;
+                    stroke-dashoffset: -62px;
+                }
+                .ham7.active .middle {
+                    stroke-dashoffset: 23px;
+                }
+                .ham7.active .bottom {
+                    stroke-dashoffset: -83px;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .App {
+
+        nav {
+            padding-left: 15px;
+            width: 100%;
+        }
+
+
+        footer {
+            padding-top: 40px;
+            height: auto;
+            flex-direction: column;
+            align-items: center;
+            
+
+            > div {
+                text-align: center;
+                width: 90%;
+                margin-bottom: 50px;
+            }
+        }
+    }
 }

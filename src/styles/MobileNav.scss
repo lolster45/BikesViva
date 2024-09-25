@@ -1,0 +1,64 @@
+.black-overlay-mobile {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 11;
+    visibility: hidden;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    transition: visibility 0.2s ease, opacity 0.2s ease;
+    background-color: rgba(0, 0, 0, 0.441);
+    > div {
+        position: absolute;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        padding: 40px;
+        padding-top: 60px;
+        height: 100%;
+        width: 50%;
+        transform: translateX(-1000px);
+        transition: transform 0.3s ease;
+        background-color: rgb(23, 22, 22);
+        .mobile-nav {
+            display: flex;
+            flex-direction: column;
+            height: 90%;
+            width: 90%;
+            > a {
+                margin-bottom: 40px;
+                font-size: 2rem;
+                text-decoration: none;
+                color: white;
+            } 
+        }
+    }
+    &.active {
+        opacity: 1;
+        visibility: visible;
+        div {
+            transform: translateX(0px);
+        }
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .black-overlay-mobile {
+        > div {
+            width: 75%;
+            .mobile-nav {
+                justify-content: flex-start;
+                height: 80%;
+                > a {
+                    margin-bottom: 80px;
+                    font-size: 1.7rem;
+                }
+            }
+        }
+    }
+}

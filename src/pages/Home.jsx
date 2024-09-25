@@ -11,7 +11,8 @@ import 'slick-carousel/slick/slick-theme.css';
 
 
 //React observer...
-//import { useInView } from 'react-intersection-observer';
+import { useInView } from 'react-intersection-observer';
+
 
 
 //Styles... 
@@ -22,8 +23,10 @@ import ContactForm from '../components/Contact';
 const Home = () => {
 
     const settings = {
-        dots: false,
+        dots: true,
+        arrows: false,
         infinite: true,
+        vertical: true,
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -33,13 +36,21 @@ const Home = () => {
     };
 
 
-    //const { ref, inView } = useInView({threshold: 0.1, triggerOnce: true});
+    const { ref, inView } = useInView({threshold: 0.1, triggerOnce: true});
+    const { ref: ref2, inView: inView2 } = useInView({threshold: 0.1, triggerOnce: true});
+
+    const { ref: ref3, inView: inView3 } = useInView({threshold: 0.1, triggerOnce: true});
+    const { ref: ref4, inView: inView4 } = useInView({threshold: 0.1, triggerOnce: true});
+
+
+    const { ref: ref5, inView: inView5 } = useInView({threshold: 0.1, triggerOnce: true});
+    const { ref: ref6, inView: inView6 } = useInView({threshold: 0.1, triggerOnce: true});
+
+
 
     return (
         <div className='home-page'>
-
             <section className="main-section">
-
                 <Slider {...settings} className='slider-thing'>
                     <div className="slide">
                         <img src="/kidBike1.jpg" alt="Slide 1" />
@@ -52,41 +63,44 @@ const Home = () => {
                     </div>     
                 </Slider>
                 <div className='overlay'>
-                    <div className='main-text'>
+                    <div ref={ref} className={`main-text ${inView ? 'fadeIn' : ''}`}>
                         <h1>Helping Children Get Rides</h1>
                         <p>Our misson is to find bikes</p>
                     </div>
-                </div>
-                
+                </div> 
             </section>
-            <div className='main-subinfo'>
+
+
+            <div ref={ref2} className={`main-subinfo ${inView2 ? 'fadeIn' : ''}`}>
                     <span>
                         <div>
                             <NumberCounter targetNumber={1000} duration={1} number={'number'}  />
                         </div>
                         <p>Funds Raised</p>
                     </span>
-                    <span>
+                    <span className={`${inView ? 'fadeIn' : ''}`}>
                         <div>
                             <NumberCounter targetNumber={3}duration={400} number={'number'} />
                         </div>
                         <p>Dedicated Volunteers</p>
                     </span>
-                    <span>
+                    <span className={`${inView ? 'fadeIn' : ''}`}>
                         <div>
                             <NumberCounter targetNumber={100}duration={400} number={'number'} />%
                         </div>
                         <p>Delivered Donations</p>
                     </span>
-                    <span>
+                    <span className={`${inView ? 'fadeIn' : ''}`}>
                         <div>
                             <NumberCounter targetNumber={3} duration={400} number={'number'} />+
                         </div>
                         <p>Media Mention</p>
                     </span>
             </div>   
+
+
             <section className="our-mission-section">
-                <div className='mission-left'>
+                <div ref={ref3} className={`mission-left ${`${inView3 ? 'fadeIn' : ''}`}`}>
                     <h1>Who We Are?</h1>
                     <p>
                         We are a father and daughter team that was inspired to start this project by seeing kids riding bikes in our neighborhood. While many  kids have bikes already, there are many more that still do not, and do not have a way to get one. We decided to try to change that!
@@ -96,14 +110,14 @@ const Home = () => {
                         Dad (a bicycle mechanic) and daughter (Lucero, 11 years old) fix, tune, wash, and test ride every single bike that we give away.  We are trying to get 100 (or more!) bikes to kids by the end of the summer, totally for free.
                     </p>
                 </div>
-                <img src="/family.jpg" alt="" />
+                <img ref={ref4} src="/family.jpg" alt="" className={`${inView4 ? 'fadeIn' : ''}`}/>
             </section>
             
 
             <section className="about-us-section">
                 <div className='about-us-container'>
                     
-                    <div className="about-us-left">
+                    <div ref={ref5} className={`about-us-left ${inView5 ? 'fadeIn' : ''}`}>
                         <div className="grid-item image-large">
                             <img 
                                 src="/elephant.jpg" 
@@ -123,7 +137,7 @@ const Home = () => {
                     </div>
 
                     
-                    <div className='about-us-right'>
+                    <div ref={ref6} className={`about-us-right ${inView6 ? 'fadeIn' : ''}`}>
                             <h2>Donations for the better of our future world</h2>
                             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi est quo, tempore maiores ex voluptates blanditiis hic, cumque assumenda soluta facilis modi maxime ipsam autem, quis minus adipisci? Eius, praesentium.</p>
                     </div>

@@ -1,0 +1,130 @@
+
+
+.sidebar {
+    position: sticky;
+    top: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 0px;
+    padding-top: 20px;
+    opacity: 0;
+    transition: width 0.3s ease, opacity 0.3s ease-in;
+
+
+    .scroll-wrap {
+        height: 100%;
+        width: 85%;
+        overflow-y: auto;
+
+        .filter-category {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 50px;
+            width: 100%;
+            //border-top: 1px solid var(--gold-yellow);
+            border-bottom: 2px solid rgb(43, 43, 43);
+
+
+            color: white;
+    
+            > h4 {
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                min-height: 50px;
+                max-height: 50px;
+                padding: 0px 20px;
+                width: 100%;
+                font-size: 0.9rem;
+                //background-color: red;
+    
+                svg {
+                    color: white;
+                }
+            }
+    
+            .filter-options {
+                position: relative;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                justify-items: center;
+
+                height: auto;
+                width: 100%;
+    
+                label {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+    
+                    width: 90%;
+    
+                    height: 40px;
+                    margin-bottom: 10px;
+
+                    font-size: 0.8rem;
+
+    
+                    > input {
+                        margin-right: 5px;
+    
+                        
+                    }
+                }
+            }
+        }
+    }
+
+
+
+    .mobile-buttons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        padding: 10px;
+        height: 100PX;
+        width: 100%;
+
+
+        button {
+            border: none;
+            outline: none;
+            border-radius: 50px;
+            height: 45px;
+            width: 45%;
+            font-weight: bolder;
+            
+
+            &:first-of-type {
+                color: black;
+                background-color: white;
+            }
+
+            &:last-of-type {
+                color: white;
+                background-color: rgb(21, 21, 21);
+            }
+        }
+
+    }
+
+    &.active {
+        opacity: 1;
+        width: 20%;
+    }
+
+  
+
+}
+
+
+
+
+

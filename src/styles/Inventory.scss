@@ -24,130 +24,175 @@
     .input-container {
         display: flex;
         align-items: center;
-        justify-content: center;
-        gap: 20px;
-
-        height: 50px;
-        width: 60%;
-        margin-bottom: 80px;
-
-        //background-color: orange;
-
-        input {
-            height: 40px;
-            width: 80%;
-            padding-left: 15px;
-            border: none;
-            border-radius: 50px;
-            outline: none;
+        justify-content: space-between;
+        height: 75px;
+        width: 100%;
+        color: white;
+        background-color: var(--background-purple);
+        padding: 25px 40px;
+        .filter-info {
+            font-size: 1.5rem;
+            //background-color: red;
         }
         .filter-buttons {
+            position: relative;
             display: flex;
+            justify-content: flex-end;
             align-items: center;
             height: 40px;
-            width: 20%;
-            //background-color: green;
-
+            width: 50%;
+            gap: 20px;
+            > span {
+                cursor: pointer;
+            }
             > svg {
                 cursor: pointer;
                 font-size: 2rem;
                 color: white;
             }
-
-           
+            .filter-options-wrap {
+                display: none;
+                position: absolute;
+                top: 50px;
+                right: 10px;
+                width: 250px;
+                height: 0px;
+                opacity: 0;                
+                transition: all 0.3s ease;
+        
+                background-color: var(--background-purple);
+        
+                div {
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    padding-left: 15px;
+                    height: 40px;
+                    margin-bottom: 10px;
+                    color: white;
+                    font-size: 0.8rem;
+                    border-bottom: 1px solid black;
+                    &:hover {
+                        color: var(--gold-yellow);
+                    }
+             
+                }
+        
+                &.active {
+                    display: block;
+                    z-index: 10;
+                    height: auto;
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
         }
     }
-    .filter-options-wrap {
-        //display: none;
-        transform: translateY(-70px);
 
-        width: 50%;
-        
-        height: 0px;
-        opacity: 0;
-        visibility: none;
-        transition: all 0.3s ease;
 
-        background-color: purple;
-
-        div {
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            padding-left: 15px;
-            height: 40px;
-            margin-bottom: 10px;
-            color: white;
-            background-color: orange;
-
-            &:nth-child(even) {
-                background-color: rgb(134, 51, 182);
-            }
-            &:nth-child(odd) {
-                background-color: rgb(125, 11, 190);
+    .inventory-bottom {
+        position: relative;
+        display: flex;
+        width: 100%;
+        .inventory-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit,  minmax(260px, 1fr));
+            justify-items: start;
+            column-gap: 20px;
+            row-gap: 50px;
+            width: 100%;
+            transition: width 0.3s ease;
+            padding: 10px;
+            .card {
+                cursor: pointer;
+                position: relative;
+                height: 380px;
+                max-width: 300px;
+                color: black;
+                background-color: #1e104b;
+                img {
+                    height: 70%;
+                    width: 100%;
+                    object-fit: cover;
+                }
+                .card-bottom {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-evenly;
+                    gap: 5px;
+                    position: relative;
+                    padding: 10px;
+                    height: 30%;
+                    color: white;
+                    .brand {
+                        font-size: 0.7rem;
+                        color: var(--gold-yellow);
+                    }
+                    .model {
+                        font-size: 1.1rem;
+                        color: inherit;
+                    }
+                    .price {
+                       color: inherit;
+                    }
+                    .year {
+                        position: absolute;
+                        top: 10px;
+                        right: 10px;
+                        color: inherit;
+                    }
+                }
             }
         }
 
-        &.active {
-            height: 300px;
-            opacity: 1;
-            visibility: visible;
-        }
+    
     }
     
 
-    .inventory-container {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        justify-items: center;
+}
 
 
-        row-gap: 30px;
+@media only screen and (max-width: 999px) {
+    .inventory-page {
 
-        min-width: 90%;
-        max-width: 90%;
+        position: relative;
+        margin-top: 0;
+
 
         //background-color: blue;
 
 
-        .card {
-            position: relative;
-            height: 340px;
-            width: 300px;
-            color: black;
-            background-color: white;
-            //background-color: orange;
-            img {
-                height: 70%;
+
+
+        .inventory-bottom {
+            position: static;
+            flex-direction: column;
+
+
+            //background-color: aqua;
+
+
+
+            .sidebar {
+                position: fixed;
+                z-index: 20;
+                height: 0px;
                 width: 100%;
-                object-fit: cover;
+                background-color: var(--background-purple);
+
+                transition: height 0.3s ease;
+
+                &.active {
+                    height: 100vh;
+                }
+
+
             }
 
-            .card-bottom {
-                display: flex;
-                flex-direction: column;
-                gap: 5px;
-                position: relative;
-                padding: 10px;
-                height: 30%;
-                background-color: rgb(231, 231, 231);
 
-                .brand {
-                    font-size: 0.8rem;
-                }
-                .model {
-
-                }
-                .price {
-
-                }
-                .year {
-                    position: absolute;
-                    top: 10px;
-                    right: 10px;
-                }
-
-            }
+            
         }
     }
 }
+
+

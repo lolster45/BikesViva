@@ -1,14 +1,10 @@
 .contact-form-container {
-
     display: flex;
     align-items: center;
     justify-content: center;
-
-    height: 400px;
+    height: auto;
     width: 100%;
-    background-color: var(--gold-yellow);
-
-
+    padding: 80px 0px;
     .form-left {
         display: flex;
         align-items: flex-start;
@@ -17,18 +13,19 @@
         height: 90%;
         width: 35%;
         padding: 20px;
-        padding-top: 80px;
-
-
+        padding-top: 20px;
+        color: white;
         h1 {
             font-size: 2.5rem;
             margin-bottom: 20px;
+            color: inherit;
         }
-        // p {
-
-        // }
+        p {
+            font-size: 0.9rem;
+            line-height: 30px;
+            color: var(--gold-yellow);
+        }
     }
-
     form {
         display: flex;
         flex-direction: column;
@@ -36,9 +33,6 @@
         justify-content: center;
         height: 90%;
         width: 40%;
-
-        //background-color: red;
-
         > div {
             display: flex;
             align-items: center;
@@ -46,7 +40,7 @@
 
             height: 70px;
             width: 90%;
-            gap: 40px;
+            gap: 20px;
             //background-color: yellow;
 
             input {
@@ -61,22 +55,86 @@
             border: none;
             outline: none;
             color: white;
-            background-color: var(--background-purple);
+            background-color: #241653;
+            &::placeholder {
+                color: white;
+            }
             &:focus::placeholder {
                 color: transparent;
             }
         }
 
         textarea {
-            height: 80px;
+            height: 120px;
             width: 90%;
             padding: 15px;
             margin-bottom: 30px;
-            
+        }
 
+        button {
+            cursor: pointer;
+            border: none;
+            outline: none;
+            height: 40px;
+            width: 120px;
+            font-weight: bolder;
+            color: black;
+            background-color: var(--gold-yellow);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            &:hover {
+                color: white;
+                background-color: black;
+            }
         }
     }
+}
 
 
+@media only screen and (max-width: 900px) {
+    .contact-form-container {
+        flex-direction: column;
+        .form-left {
+            text-align: center;
+            width: 90%;
+            margin-bottom: 30px;
+            h1 {
+                width: 100%;
+            }
+        }
+        form {
+            width: 90%;
+            > div {
+                width: 100%;
+            }
+            textarea {
+                height: 200px;
+                width: 100%;
+            }
+            button {
+                align-self: flex-end;
+                &:hover {
+                    color: white;
+                    background-color: black;
+                }
+            }
+        }
+    }
+}
 
+@media only screen and (max-width: 650px) {
+    .contact-form-container {
+        form {
+            > div {
+                height: auto;
+                flex-direction: column;
+                width: 100%;
+                margin-bottom: 20px;
+                input {
+                    height: 50px;
+                    width: 100%;
+                }
+            }
+ 
+        }
+    }
 }
