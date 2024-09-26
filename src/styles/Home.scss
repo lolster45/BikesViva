@@ -4,23 +4,19 @@
 
 
 .home-page {
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding-bottom: 40px;
     height: auto;
-    width: 100%;
-
-
-  
-
-
+    max-width: 100vw;
     .main-section {
         overflow: hidden;
         position: relative;
         height: auto;
-        width: 100%;
+        width: 100%;   
         .slider-thing  {
             position: relative;
             width: 100%;
@@ -32,7 +28,6 @@
                     width: 100%;
                 }
             }
-
             .slick-dots {
                 position: absolute;
                 z-index: 10;
@@ -98,9 +93,6 @@
             }
         }
     }
-
-
-
     .main-subinfo  {
         display: flex;
         justify-content: space-between;
@@ -136,9 +128,6 @@
 
         }
     }
-
-
-
     .our-mission-section {
         position: relative;
         display: flex;
@@ -195,8 +184,6 @@
             }
         }
     }
-
-
     .about-us-section {
         display: flex;
         justify-content: center;
@@ -301,9 +288,93 @@
             }
         }
     }
+    .news-section {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        height: 520px;
+        margin-top: 200px;
+        margin-bottom: 200px;
+        color: white;
+        > h2 {
+            font-size: 2rem;
+            text-align: center;
+            height: 10%;
+            margin-bottom: 50px;
+        }
+        .article-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 90%;
+            width: 100%;
+            .article-card {
+                position: relative;
+                height: 100%;
+                width: 32%;    
+                background-color: #1c1047;
+                img {
+                    height: 50%;
+                    width: 100%;
+                    object-fit: cover;
+                }
+                .article-bottom {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    justify-content: space-between;
+                    padding: 15px;
+                    height: 50%;
+                    h2 {
+                        font-size: 1.7rem;
+                        margin-bottom: 5px;
+                    }
+                    p {
+                        font-size: 0.8rem;
+                        line-height: 20px;
+                        margin-bottom: 10px;
+                        color: rgb(197, 197, 197);
+                    }
+                    a {
+                        button {
+                            cursor: pointer;
+                            height: 35px;
+                            width: 130px;
+                            border: none;
+                            outline: none;
+                            font-weight: bolder;
+                            color: black;
+                            background-color: var(--gold-yellow);
+                            transition: background-color 0.3s ease, color 0.3s ease;
+                        }
 
 
+                        &.first button {
+                             &:hover {
+                                color: white;
+                                background-color: #6765FF;
+                             }                        
+                        }
 
+                        &.second button {
+                            &:hover {
+                                color: white;
+                                background-color: #1F3F66;
+                             }   
+                        }
+
+                        &.third button {
+                            &:hover {
+                                color: white;
+                                background-color: #ED5431;
+                             }   
+                        }
+
+                    }
+                }
+            }
+        }
+    }
     .process-section {
         position: relative;
         display: flex;
@@ -369,12 +440,7 @@
 
 
     }
-
-
-
 }
-
-
 
 
 @media only screen and (max-width: 999px) {
@@ -425,9 +491,17 @@
                 }
             }
         }
-
-
-
+        .news-section {
+            height: auto;
+            .article-wrap {
+                height: auto;  
+                flex-direction: column;
+                .article-card {
+                    margin-bottom: 20px;
+                    width: 80%;
+                }
+            }
+        }
         .process-section {
             height: auto;
             width: 90%;
@@ -548,6 +622,13 @@
 
 @media only screen and (max-width: 500px) {
     .home-page {
+        .news-section {
+            .article-wrap {
+                .article-card {
+                    width: 100%;
+                }
+            }
+        }
         .process-section {
             padding: 0;
             width: 95%;

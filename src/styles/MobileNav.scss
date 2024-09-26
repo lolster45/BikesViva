@@ -11,10 +11,9 @@
     height: 100%;
     width: 100vw;
     transition: visibility 0.2s ease, opacity 0.2s ease;
-    background-color: rgba(0, 0, 0, 0.441);
+    background-color: rgba(0, 0, 0, 0.801);
 
 
-    background-color: green;
 
 
     > div {
@@ -30,15 +29,15 @@
         width: 50%;
         transform: translateX(-1000px);
         transition: transform 0.3s ease;
-        background-color: rgb(23, 22, 22);
+        background-color: var(--background-purple);
         .mobile-nav {
             display: flex;
             flex-direction: column;
             height: 90%;
             width: 90%;
             > a {
-                margin-bottom: 40px;
-                font-size: 2rem;
+                margin-bottom: 60px;
+                font-size: 1.5rem;
                 text-decoration: none;
                 color: white;
             } 
@@ -61,8 +60,8 @@
                 justify-content: flex-start;
                 height: 80%;
                 > a {
-                    margin-bottom: 80px;
-                    font-size: 1.7rem;
+                    margin-bottom: 50px;
+                    font-size: 1.5rem;
                 }
             }
         }

@@ -137,32 +137,29 @@
                 }
             }
         } 
+
+
+        
     }
 }
 
 @media only screen and (max-width: 999px) {
     .inventory-page {
-
         position: relative;
         margin-top: 0;
-
-
-        //background-color: blue;
-
-
-
-
         .inventory-bottom {
             position: static;
             flex-direction: column;
             .sidebar {
+                visibility: hidden;
                 position: fixed;
                 z-index: 20;
                 height: 0px;
                 width: 100%;
                 background-color: var(--background-purple);
-                transition: height 0.3s ease;
+                transition: height 0.3s ease, visibility 0.3s ease;
                 &.active {
+                    visibility: visible;
                     height: 100vh;
                 }
             }

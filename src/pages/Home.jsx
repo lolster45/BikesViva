@@ -138,11 +138,57 @@ const Home = () => {
 
                     
                     <div ref={ref6} className={`about-us-right ${inView6 ? 'fadeIn' : ''}`}>
-                            <h2>Donations for the better of our future world</h2>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi est quo, tempore maiores ex voluptates blanditiis hic, cumque assumenda soluta facilis modi maxime ipsam autem, quis minus adipisci? Eius, praesentium.</p>
+                            <h2>Future?</h2>
+                            <p>
+                            We initially planned to give away 100 bikes to Austin area kids by the end of summer 2020, but we quickly surpassed that goal. Now, we're committed to reaching any child in need of a bike year-round, and there's no stopping us!
+                            </p>
+                            <p>As bike requests and donations continue to grow, we need your help to keep up. We're grateful for any support, whether through monetary donations or bike contributions. Our next step is expanding into a warehouse to store, repair, and distribute bikes to kids as quickly as possible!
+                            </p>
                     </div>
 
                 </div>
+            </section>
+
+
+            <section className="news-section">
+
+                <h2>Were on the News!!!</h2>
+
+
+                <div className="article-wrap">
+                    <article className="article-card">
+                        <img src="/articleOneImage.png" alt="" />
+                        <div className="article-bottom">
+                            <h2>Returning the Favor</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quod minus non quaerat ipsum in, porro ad similique nulla temporibus vel est eum dolores, facere at deserunt, tenetur cupiditate sed?</p>
+                            <a href="https://www.facebook.com/ReturningTheFavor/videos/908733956201486/" className="first" target='_blank'>
+                                <button>Check Out</button>
+                            </a>
+                        </div>
+                    </article>
+                    <article className="article-card">
+                        <img src="/articleTwoImage.png" alt="" />
+                        <div className="article-bottom">
+                            <h2>CBS Austin</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quod minus non quaerat ipsum in, porro ad similique nulla temporibus vel est eum dolores, facere at deserunt, tenetur cupiditate sed?</p>
+                            <a href="https://cbsaustin.com/news/local/austin-man-donates-over-100-bikes-to-kids-in-underserved-communities-looking-to-grow" className="second" target='_blank'>
+                                <button>Check Out</button>
+                            </a>                        
+                        </div>
+                    </article>
+                    <article className="article-card">
+                        <img src="/articleThreeImage.png" alt="" />
+                        <div className="article-bottom">
+                            <h2>KXAN Austin</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quod minus non quaerat ipsum in, porro ad similique nulla temporibus vel est eum dolores, facere at deserunt, tenetur cupiditate sed?</p>
+                            <a href="https://www.kxan.com/news/local/austin/texas-school-for-the-deaf-students-surprised-with-30-brand-new-bikes/" className="third" target='_blank'>
+                                <button>Check Out</button>
+                            </a>                        
+                        </div>
+                    </article>
+
+                </div>
+
             </section>
 
 

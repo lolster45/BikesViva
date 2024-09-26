@@ -10,6 +10,13 @@ import FAQ from './pages/FAQ';
 //Components...
 import ScrollToTop from './components/ScrollToTop';
 
+//React icons...
+import { FaFacebook, FaInstagram } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+
+
+
+
 //Styles...
 import './styles/App.scss'; // For basic styling
 import { useState } from 'react';
@@ -108,8 +115,16 @@ function App() {
             <ul>
               <Link to={'/contact'}>Locations</Link>
               <Link to={'/FAQ'}>FAQ</Link>
-              <div>
-                social media
+              <div className='social-media-container'>
+                  <a href="">
+                    <FaFacebook/>
+                  </a>
+                  <a href="https://www.instagram.com/100bikesforkids/?hl=en">
+                    <FaInstagram/>
+                  </a>
+                  <a href="">
+                    <FaXTwitter/>
+                  </a>
               </div>
             </ul>
           </div>

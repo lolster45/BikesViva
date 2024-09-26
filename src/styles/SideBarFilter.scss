@@ -11,17 +11,14 @@
     padding-top: 20px;
     opacity: 0;
     transition: width 0.3s ease, opacity 0.3s ease-in;
-
-
-
-
     .scroll-wrap {
         height: 80%;
         width: 85%;
         overflow-y: auto;
-
-        background-color: green;
-
+        scrollbar-width: none; /* For Firefox */
+        &::-webkit-scrollbar {
+            display: none; /* Hides the scrollbar */
+        }
         .filter-category {
             position: relative;
             display: flex;
