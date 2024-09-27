@@ -1,7 +1,8 @@
 //React...
 import { useState } from 'react';
 
-//import { sendForm } from '@emailjs/browser';
+//EmailJS...
+import { sendForm } from '@emailjs/browser';
 
 
 
@@ -9,7 +10,7 @@ import { useState } from 'react';
 //import { useInView } from 'react-intersection-observer';
 
 //React icons...
-//import { RiErrorWarningFill } from "react-icons/ri";
+import { RiErrorWarningFill } from "react-icons/ri";
 
 // styles...
 import '../styles/ContactComp.scss'
@@ -18,11 +19,11 @@ import '../styles/ContactComp.scss'
 const ContactForm = () => {
 
 
-    //const [emailIsInvalid, setEmailIsInvalid] = useState<boolean>(false);
+    let [emailIsInvalid, setEmailIsInvalid] = useState('')
 
     const [formData, setFormData] = useState({
-      from_email: '',
       from_name: '',
+      from_email: '',
       message: ''
     });
 
@@ -39,36 +40,38 @@ const ContactForm = () => {
     
     const handleSubmitCheck = async (e) => {
       e.preventDefault();
+
       if(formData.from_email && formData.from_name && formData.message) {
 
-        if(!emailPattern.test(formData.from_email)) {
-          //setEmailIsInvalid(true);
-          return;
-        }
-        //sendEmail(e);
-        //setEmailIsInvalid(false);
-         setFormData({
-           from_email: '',
-           from_name: '',
-           message: ''
-         });
+         if(!emailPattern.test(formData.from_email)) {
+           setEmailIsInvalid('Invalid Email');
+           return;
+         }
+          sendEmail(e);
+          setEmailIsInvalid('');
+          setFormData({
+            from_name: '',
+            from_email: '',
+            message: ''
+          });
       }
     };
 
-    // const sendEmail = async (e: any) => {
-    //   try {
-    //     await sendForm(
-    //         'service_50xi2u4',
-    //         'template_m1oqvw5',
-    //         e.target,
-    //         "V19aGRH_RgVYiOgI_"
-    //     );
-    //     console.log('Email sent successfully');
-    //   }
-    //   catch (error) {
-    //     console.error('Error sending email:', error);
-    //   }
-    // };
+    const sendEmail = async (e) => {
+      try {
+        await sendForm(
+            'service_1ucjjo5',
+            'template_87ojqiq',
+            e.target,
+            "jbgrZZqFO3D2ntdg8"
+        );
+        console.log('Email sent successfully');
+      }
+      catch (error) {
+        setEmailIsInvalid("Error! Something Went Wrong")
+        console.error('Error sending email:', error);
+      }
+    };
 
 
 
@@ -84,6 +87,12 @@ const ContactForm = () => {
             onSubmit={handleSubmitCheck}
         >
             <div>
+                {emailIsInvalid &&
+                  <span className='error-msg'>
+                    <RiErrorWarningFill/>
+                    {emailIsInvalid}
+                  </span>
+                } 
                 <input
                   type="text"
                   name="from_name"
@@ -101,13 +110,6 @@ const ContactForm = () => {
                   onChange={handleChange}
                   required
                 />
-                  {/* {emailIsInvalid &&
-                    <span>
-                      Invalid
-                      <RiErrorWarningFill/>
-                    </span>
-                  } */}
-
             </div>
             <textarea
               name="message"

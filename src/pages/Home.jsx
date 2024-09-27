@@ -116,7 +116,6 @@ const Home = () => {
 
             <section className="about-us-section">
                 <div className='about-us-container'>
-                    
                     <div ref={ref5} className={`about-us-left ${inView5 ? 'fadeIn' : ''}`}>
                         <div className="grid-item image-large">
                             <img 
@@ -135,8 +134,6 @@ const Home = () => {
                             />
                         </div>
                     </div>
-
-                    
                     <div ref={ref6} className={`about-us-right ${inView6 ? 'fadeIn' : ''}`}>
                             <h2>Future?</h2>
                             <p>
@@ -151,10 +148,7 @@ const Home = () => {
 
 
             <section className="news-section">
-
                 <h2>Were on the News!!!</h2>
-
-
                 <div className="article-wrap">
                     <article className="article-card">
                         <img src="/articleOneImage.png" alt="" />
@@ -186,9 +180,7 @@ const Home = () => {
                             </a>                        
                         </div>
                     </article>
-
                 </div>
-
             </section>
 
 

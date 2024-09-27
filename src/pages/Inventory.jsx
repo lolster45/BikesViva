@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react';
 
+import {Link} from 'react-router-dom'
+
+
 
 //Inventory...
 import bikeInventory from '../Bikes';
@@ -59,14 +62,7 @@ const Inventory = () => {
             'Cyclocross',
             'Gravel'
         ],
-        years: [
-            2022,
-            2023,
-            2021,
-            2020
-        ],
-        sizes: ['S', 'M', 'L'],
-        prices: ['$50-$100', '$101-$200']
+        sizes: ['s', 'm', 'l'],
     };
 
 
@@ -103,16 +99,12 @@ const Inventory = () => {
         brands: '',
         types: '',
         sizes: '',
-        prices: ''
     });
 
 
     const handleFilterChange = (name, value) => {
         // Track all active filters in state
         setSideFilter(value);            
-
-        console.log(name)
-
         setSelectedFilters(prev => ({
             ...prev,
             [name]: value
@@ -124,11 +116,8 @@ const Inventory = () => {
         // Create a copy of the bike inventory to apply filters cumulatively
         let filtered = bikeInventory;
 
-
-        
         // Apply all filters based on currently selected values
         if (selectedFilters.brands) {
-            console.log('changing brands...')
           filtered = filtered.filter((product) => product.brand === selectedFilters.brands);
         }
         if (selectedFilters.types) {
@@ -137,9 +126,7 @@ const Inventory = () => {
         if (selectedFilters.sizes) {
           filtered = filtered.filter((product) => product.size === selectedFilters.sizes);
         }
-        if (selectedFilters.prices) {
-          filtered = filtered.filter((product) => product.price === selectedFilters.prices);
-        }
+
         
         // Set the filtered items
         setFilteredItems(filtered);
@@ -162,8 +149,6 @@ const Inventory = () => {
                     <span onClick={() => setActiveSide(prev => !prev)}>Filters</span>
                     <IoFilterSharp onClick={() => setSortByActiveFilter(prev => !prev)}/>
                     <div className={`filter-options-wrap ${sortByActiveFilter ? 'active' : ''}`}>
-                        <div onClick={handleSortByFilter}>Price (ascending)</div>
-                        <div onClick={handleSortByFilter}>Price (descending)</div>
                         <div onClick={handleSortByFilter}>Year (older)</div>
                         <div onClick={handleSortByFilter}>Year (newest)</div>
                     </div> 
@@ -171,52 +156,13 @@ const Inventory = () => {
                     
             </div>
 
-
-            
-
-            {/* <div className={`inventory-bottom ${activeSide ? 'active' : ''}`}>
-
-                <SidebarFilters 
-                    filters={filters} 
-                    handleFilterChange={handleFilterChange} 
-                    setActiveSide={setActiveSide}
-                />
-
-
-
-
-                <div className='inventory-container'>
-                    {
-                        filteredItems.map(bike => {
-                            return (
-                                <div key={bike.id} className="card">
-                                    <img src="/bikeImage.jpg" alt="" />
-                                    <div className='card-bottom'>
-                                        <div className='brand'>{bike.brand}</div>
-                                        <h2 className='model'>{bike.model}</h2>
-                                        <div className='price'>${bike.price}</div>
-                                        <span className='year'>{bike.year}</span>
-                                    </div>
-                                </div>
-                            )
-                        })
-
-                    }
-                </div>
-            </div> */}
-
             <div className='inventory-bottom'>
-
                 <SidebarFilters 
                     filters={filters} 
                     handleFilterChange={handleFilterChange} 
                     activeSlide={`${activeSide ? 'active' : ''}`}
                     setActiveSide={setActiveSide}
                 />
-
-
-
-
                 <div className='inventory-container'>
                     {
                         filteredItems.map(bike => {
@@ -225,8 +171,10 @@ const Inventory = () => {
                                     <img src="/bikeImage.jpg" alt="" />
                                     <div className='card-bottom'>
                                         <div className='brand'>{bike.brand}</div>
-                                        <h2 className='model'>{bike.model}</h2>
-                                        <div className='price'>${bike.price}</div>
+                                        <Link to={`/inventory/${bike.id}`}>
+                                            <h2 className='model'>{bike.model}</h2>
+                                        </Link>
+                                        <div className='type'>{bike.type}</div>
                                         <span className='year'>{bike.year}</span>
                                     </div>
                                 </div>

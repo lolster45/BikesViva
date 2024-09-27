@@ -1,0 +1,111 @@
+.moreInfo-page {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    height: auto;
+    width: 100%;
+    gap: 40px;
+    img {
+        width: 30%;
+    }
+    .product-info-wrap {
+        height: auto;
+        width: 30%;
+        color: white;
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: inherit;
+        }
+        p {
+            font-size: 0.9rem;
+            line-height: 30px;
+            margin-bottom: 30px;
+            color: var(--gold-yellow);
+        }
+        .moreInfo-subInfo {
+            display: flex;
+            flex-direction: column;
+            span {
+                margin-bottom: 10px;
+            }
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+            input, textarea {
+                padding-left: 15px;
+                margin-bottom: 10px;
+                height: 40px;
+                border: none;
+                outline: none;
+                width: 100%;
+                color: white;
+                background-color: rgb(43, 3, 90);
+                &:focus::placeholder {
+                    color: transparent;
+                }
+            }
+            textarea {
+                padding-top: 15px;
+                height: 200px;
+            }
+            button {
+                cursor: pointer;
+                border: none;
+                outline: none;
+                height: 40px;
+                width: 120px;
+                margin-top: 20px;
+                font-weight: bolder;
+                background-color: var(--gold-yellow);
+                transition: color 0.3s ease, background-color 0.3s ease;
+
+                &:hover {
+                    color: var(--gold-yellow);
+                    background-color: black;
+                }
+            }      
+        }
+    }
+}
+
+@media only screen and (max-width: 999px) {
+    .moreInfo-page {
+        flex-direction: column;
+        align-items: center;
+        img {
+            width: 50%;
+        }
+        .product-info-wrap {
+            width: 80%;
+            form {
+                button {
+                    align-self: flex-end;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .moreInfo-page {
+        flex-direction: column;
+        align-items: center;
+        img {
+            width: 90%;
+        }
+        .product-info-wrap {
+            width: 90%;
+            form {
+                button {
+                    align-self: flex-end;
+                }
+            }
+        }
+    }
+}

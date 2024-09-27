@@ -8,7 +8,6 @@ const SidebarFilters = ({ filters, handleFilterChange, setActiveSide, activeSlid
     brand: false,
     size: false,
     type: false,
-    price: false,
   });
 
   // State for tracking selected radio buttons
@@ -16,7 +15,6 @@ const SidebarFilters = ({ filters, handleFilterChange, setActiveSide, activeSlid
     brand: '',
     type: '',
     size: '',
-    price: '',
   });
 
   const toggleFilter = (filterName) => {

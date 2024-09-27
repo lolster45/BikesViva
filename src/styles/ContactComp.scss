@@ -27,12 +27,24 @@
         }
     }
     form {
+        position: relative;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         height: 90%;
         width: 40%;
+        .error-msg {
+            position: absolute;
+            top: -8px;
+            right: 30px;
+            font-size: 0.9rem;
+            color: red;
+
+            background-color: blue;
+        }
+
+
         > div {
             display: flex;
             align-items: center;

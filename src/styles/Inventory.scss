@@ -99,12 +99,12 @@
             .card {
                 cursor: pointer;
                 position: relative;
-                height: auto;
+                height: 330px;
                 max-width: 300px;
                 color: black;
                 background-color: #1e104b;
                 img {
-                    height: 70%;
+                    max-height: 70%;
                     width: 100%;
                     object-fit: cover;
                 }
@@ -117,6 +117,10 @@
                     padding: 10px;
                     height: 30%;
                     color: white;
+                    a {
+                        color: white;
+                        text-decoration: none;
+                    }
                     .brand {
                         font-size: 0.7rem;
                         color: var(--gold-yellow);
@@ -125,8 +129,10 @@
                         font-size: 1.1rem;
                         color: inherit;
                     }
-                    .price {
-                       color: inherit;
+                    .type {
+                        padding: 5px;
+                        font-size: 0.7rem;
+                        color: inherit;
                     }
                     .year {
                         position: absolute;
@@ -140,6 +146,13 @@
 
 
         
+    }
+}
+
+
+@media only screen and (min-width: 1500px) {
+    .inventory-page {
+        max-width: 1600px;
     }
 }
 

@@ -27,12 +27,8 @@
             justify-content: center;
             min-height: 50px;
             width: 100%;
-            //border-top: 1px solid var(--gold-yellow);
             border-bottom: 2px solid rgb(43, 43, 43);
-
-
             color: white;
-    
             > h4 {
                 cursor: pointer;
                 display: flex;
@@ -92,8 +88,6 @@
         padding: 10px;
         height: 100PX;
         width: 100%;
-
-
         button {
             border: none;
             outline: none;
@@ -113,30 +107,18 @@
                 background-color: rgb(21, 21, 21);
             }
         }
-
     }
-
     &.active {
         opacity: 1;
         width: 20%;
     }
-
-  
-
 }
 
 
 @media only screen and (max-width: 999px) {
     .sidebar {
-
-
         .mobile-buttons {
             display: flex;
         }
     }
 }
-
-
-
-
-

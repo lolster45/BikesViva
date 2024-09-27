@@ -21,6 +21,7 @@ import { FaXTwitter } from "react-icons/fa6";
 import './styles/App.scss'; // For basic styling
 import { useState } from 'react';
 import MobileNav from './components/MobileNav';
+import MoreInfoPage from './pages/MoreInfoPage';
 
 function App() {
 
@@ -96,6 +97,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/inventory" element={<Inventory />} />
+          <Route path="/inventory/:id" element={<MoreInfoPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/FAQ" element={<FAQ />} />
         </Routes>
