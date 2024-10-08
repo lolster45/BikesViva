@@ -1,26 +1,29 @@
-//import React from 'react';
 
 //Components...
 import NumberCounter from '../components/NumberCounter';
+import ContactForm from '../components/Contact';
 
 //React slickk...
 import Slider from "react-slick";
-// src/index.tsx or src/App.tsx
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-
 
 //React observer...
 import { useInView } from 'react-intersection-observer';
 
-
+//Firebase...
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../firebase';
 
 //Styles... 
 import '../styles/Home.scss'
-import ContactForm from '../components/Contact';
+
+
 
 
 const Home = () => {
+
+    const [user] = useAuthState(auth)
 
     const settings = {
         dots: true,
@@ -38,14 +41,10 @@ const Home = () => {
 
     const { ref, inView } = useInView({threshold: 0.1, triggerOnce: true});
     const { ref: ref2, inView: inView2 } = useInView({threshold: 0.1, triggerOnce: true});
-
     const { ref: ref3, inView: inView3 } = useInView({threshold: 0.1, triggerOnce: true});
     const { ref: ref4, inView: inView4 } = useInView({threshold: 0.1, triggerOnce: true});
-
-
     const { ref: ref5, inView: inView5 } = useInView({threshold: 0.1, triggerOnce: true});
     const { ref: ref6, inView: inView6 } = useInView({threshold: 0.1, triggerOnce: true});
-
 
 
     return (
@@ -69,8 +68,6 @@ const Home = () => {
                     </div>
                 </div> 
             </section>
-
-
             <div ref={ref2} className={`main-subinfo ${inView2 ? 'fadeIn' : ''}`}>
                     <span>
                         <div>
@@ -97,8 +94,6 @@ const Home = () => {
                         <p>Media Mention</p>
                     </span>
             </div>   
-
-
             <section className="our-mission-section">
                 <div ref={ref3} className={`mission-left ${`${inView3 ? 'fadeIn' : ''}`}`}>
                     <h1>Who We Are?</h1>
@@ -112,24 +107,22 @@ const Home = () => {
                 </div>
                 <img ref={ref4} src="/family.jpg" alt="" className={`${inView4 ? 'fadeIn' : ''}`}/>
             </section>
-            
-
             <section className="about-us-section">
                 <div className='about-us-container'>
                     <div ref={ref5} className={`about-us-left ${inView5 ? 'fadeIn' : ''}`}>
                         <div className="grid-item image-large">
                             <img 
-                                src="/elephant.jpg" 
+                                src="https://earlyrider.com/cdn/shop/files/Hellion16_gallery_desktop2_7e5b2e5c-0a40-4a01-8b2b-34ab63525792.jpg?v=1682489503" 
                                 alt="Large Image" 
                             />
                         </div>
                         <div className="grid-item"> 
-                            <h2>20</h2>
+                            <h2>100+</h2>
                             <p>Single column content</p>
                         </div>
                         <div className="grid-item image-small">
                             <img 
-                                src="/candy.jpg" 
+                                src="https://forthbikes.com/wp-content/uploads/2023/10/banner-002-1-scaled.jpg" 
                                 alt="Small Image"
                             />
                         </div>
@@ -145,8 +138,6 @@ const Home = () => {
 
                 </div>
             </section>
-
-
             <section className="news-section">
                 <h2>Were on the News!!!</h2>
                 <div className="article-wrap">
@@ -182,8 +173,6 @@ const Home = () => {
                     </article>
                 </div>
             </section>
-
-
             <section className="process-section">
                 <h2>The Process</h2>
                 <div>
@@ -191,29 +180,23 @@ const Home = () => {
                         <span>Step 1</span>
                         <img src="/broken-bike.png" alt="" />
                         <h2>Find Broken Bike</h2>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequatur ad quidem nihil perspiciatis repudiandae dolor tempora voluptatibus aperiam amet explicabo! Accusantium quae maiores eaque ab cupiditate. Facilis aliquam quisquam illo.</p>
+                        <p>It all starts with my daughter and me hunting around the neighborhood or checking donation centers for old, broken bikes. We love finding these forgotten treasures, knowing that with a little love, they’ll soon be ready to ride again.</p>
                     </div>
                     <div className="process-card">
                         <span>Step 2</span>
                         <img className='fix-image' src="/fix-broken-bike.png" alt="" />
                         <h2>Fix it!</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, numquam corrupti incidunt harum modi voluptatum. Debitis, corrupti possimus ex fuga dolor sequi quod laudantium aliquam inventore aut tenetur adipisci nesciunt!</p>
+                        <p>Once we get a bike, the real fun begins! Together, we spend time fixing it up—tightening the bolts, replacing parts, whatever it needs. Every bike gets our full attention because we want to make sure it’s safe and ready for its new home.</p>
                     </div>
                     <div className="process-card">
                         <span>Step 3</span>
                         <img src="/present.png" alt="" />
                         <h2>Give Away</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam est soluta, accusamus adipisci, voluptate laudantium incidunt at exercitationem corrupti numquam sed temporibus repudiandae odit. Recusandae quis ex placeat eligendi nisi!</p>
+                        <p>This is our favorite part—handing the bikes over to kids who need them. Seeing their faces light up when they realize it’s theirs to keep is priceless. It’s more than just giving away a bike—it’s about sharing joy and making a difference, one ride at a time.</p>
                     </div>
                 </div>
             </section>
-
-
-
             <ContactForm/>
-
-
-            
         </div>
     );
 };

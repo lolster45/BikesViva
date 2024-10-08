@@ -1,5 +1,4 @@
 .black-overlay-mobile {
-    //display: none;
     position: fixed;
     top: 0px;
     left: 0px;
@@ -12,10 +11,6 @@
     width: 100vw;
     transition: visibility 0.2s ease, opacity 0.2s ease;
     background-color: rgba(0, 0, 0, 0.801);
-
-
-
-
     > div {
         position: absolute;
         z-index: 10;

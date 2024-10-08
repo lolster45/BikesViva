@@ -1,8 +1,14 @@
+//React...
 import React, { useState } from 'react';
+
+//React icons...
 import { IoIosArrowDown } from "react-icons/io";
+
+//Styles...
 import '../styles/SideBarFilter.scss';
 
 const SidebarFilters = ({ filters, handleFilterChange, setActiveSide, activeSlide }) => {
+
   // State for managing the opened filters
   const [isOpen, setIsOpen] = useState({
     brand: false,
@@ -24,7 +30,6 @@ const SidebarFilters = ({ filters, handleFilterChange, setActiveSide, activeSlid
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-
     handleFilterChange(name, value);
     setSelected(prev => ({ ...prev, [name]: value })); // Update selected state
   };
@@ -32,7 +37,6 @@ const SidebarFilters = ({ filters, handleFilterChange, setActiveSide, activeSlid
   return (
     <div className={`sidebar ${activeSlide}`}>
       <div className='scroll-wrap'>
-
         {Object.keys(filters).map((filterCategory) => (
           <div className="filter-category" key={filterCategory}>
             <h4 onClick={() => toggleFilter(filterCategory)}>
@@ -58,7 +62,6 @@ const SidebarFilters = ({ filters, handleFilterChange, setActiveSide, activeSlid
           </div>
         ))}
       </div>
-      
       <div className="mobile-buttons">
         <button onClick={() => setActiveSide(false)}>Exit</button>
         <button onClick={() => setActiveSide(false)}>Apply</button>

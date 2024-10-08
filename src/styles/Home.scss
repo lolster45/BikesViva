@@ -308,6 +308,7 @@
                 height: 100%;
                 width: 32%;    
                 background-color: #1c1047;
+                transition: transform 0.3s ease;
                 img {
                     height: 50%;
                     width: 100%;
@@ -366,6 +367,10 @@
                         }
 
                     }
+                }
+
+                &:hover {
+                    transform: scale(1.02);
                 }
             }
         }

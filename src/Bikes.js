@@ -1,4 +1,3 @@
-
 const bikeInventory = [
   {
     id: 1,
@@ -9,7 +8,8 @@ const bikeInventory = [
     year: 2022,
     inStock: true,
     size: 'l',
-    description: 'A versatile road bike known for its endurance performance and smooth ride, perfect for long-distance road cycling.'
+    description: 'A versatile road bike known for its endurance performance and smooth ride, perfect for long-distance road cycling.',
+    images: ['https://www.prioritybicycles.com/cdn/shop/products/main_s16.jpg?v=1663092769']
   },
   {
     id: 2,
@@ -20,7 +20,8 @@ const bikeInventory = [
     year: 2023,
     inStock: true,
     size: 's',
-    description: 'An entry-level mountain bike built for adventurous trails, offering reliable performance at an affordable price.'
+    description: 'An entry-level mountain bike built for adventurous trails, offering reliable performance at an affordable price.',
+    images: ['https://www.prioritybicycles.com/cdn/shop/products/main_s16.jpg?v=1663092769']
   },
   {
     id: 3,
@@ -31,7 +32,8 @@ const bikeInventory = [
     year: 2021,
     inStock: false,
     size: 'm',
-    description: 'A carbon road bike designed for long, smooth rides with endurance geometry and a lightweight frame.'
+    description: 'A carbon road bike designed for long, smooth rides with endurance geometry and a lightweight frame.',
+    images: ['https://www.prioritybicycles.com/cdn/shop/products/main_s16.jpg?v=1663092769']
   },
   {
     id: 4,
@@ -42,7 +44,8 @@ const bikeInventory = [
     year: 2020,
     inStock: true,
     size: 's',
-    description: 'This road bike blends performance and comfort, making it ideal for weekend warriors and competitive cyclists alike.'
+    description: 'This road bike blends performance and comfort, making it ideal for weekend warriors and competitive cyclists alike.',
+    images: ['https://www.prioritybicycles.com/cdn/shop/products/main_s16.jpg?v=1663092769']
   },
   {
     id: 5,
@@ -53,7 +56,8 @@ const bikeInventory = [
     year: 2023,
     inStock: true,
     size: 'l',
-    description: 'A high-performance mountain bike that dominates technical trails with its full suspension and precision handling.'
+    description: 'A high-performance mountain bike that dominates technical trails with its full suspension and precision handling.',
+    images: ['https://www.prioritybicycles.com/cdn/shop/products/main_s16.jpg?v=1663092769']
   },
   {
     id: 6,
@@ -64,7 +68,8 @@ const bikeInventory = [
     year: 2022,
     inStock: false,
     size: 'm',
-    description: 'A premium trail bike built for aggressive riders, offering exceptional downhill control and climbing capability.'
+    description: 'A premium trail bike built for aggressive riders, offering exceptional downhill control and climbing capability.',
+    images: ['https://www.prioritybicycles.com/cdn/shop/products/main_s16.jpg?v=1663092769']
   },
   {
     id: 7,
@@ -75,7 +80,8 @@ const bikeInventory = [
     year: 2023,
     inStock: true,
     size: 'l',
-    description: 'A lightweight and responsive cross-country race bike with cutting-edge suspension for the most demanding trails.'
+    description: 'A lightweight and responsive cross-country race bike with cutting-edge suspension for the most demanding trails.',
+    images: ['https://www.prioritybicycles.com/cdn/shop/products/main_s16.jpg?v=1663092769']
   },
   {
     id: 8,
@@ -86,7 +92,8 @@ const bikeInventory = [
     year: 2022,
     inStock: true,
     size: 's',
-    description: 'A carbon road bike that combines speed, comfort, and endurance for riders who love long-distance challenges.'
+    description: 'A carbon road bike that combines speed, comfort, and endurance for riders who love long-distance challenges.',
+    images: ['https://www.prioritybicycles.com/cdn/shop/products/main_s16.jpg?v=1663092769']
   },
   {
     id: 9,
@@ -97,7 +104,8 @@ const bikeInventory = [
     year: 2023,
     inStock: true,
     size: 'm',
-    description: 'A high-end Italian racing bike designed for superior aerodynamics and performance on the road.'
+    description: 'A high-end Italian racing bike designed for superior aerodynamics and performance on the road.',
+    images: ['https://www.prioritybicycles.com/cdn/shop/products/main_s16.jpg?v=1663092769']
   },
   {
     id: 10,
@@ -108,7 +116,8 @@ const bikeInventory = [
     year: 2021,
     inStock: false,
     size: 'l',
-    description: 'A capable all-mountain bike with balanced geometry for both climbing efficiency and downhill fun.'
+    description: 'A capable all-mountain bike with balanced geometry for both climbing efficiency and downhill fun.',
+    images: ['https://www.prioritybicycles.com/cdn/shop/products/main_s16.jpg?v=1663092769']
   },
   {
     id: 11,
@@ -119,7 +128,8 @@ const bikeInventory = [
     year: 2023,
     inStock: true,
     size: 'm',
-    description: 'An electric mountain bike that excels on tough terrain, providing both power and agility for off-road adventures.'
+    description: 'An electric mountain bike that excels on tough terrain, providing both power and agility for off-road adventures.',
+    images: ['https://www.prioritybicycles.com/cdn/shop/products/main_s16.jpg?v=1663092769']
   },
   {
     id: 12,
@@ -130,7 +140,8 @@ const bikeInventory = [
     year: 2023,
     inStock: true,
     size: 's',
-    description: 'A full-suspension electric mountain bike designed to tackle the steepest climbs and toughest trails with ease.'
+    description: 'A full-suspension electric mountain bike designed to tackle the steepest climbs and toughest trails with ease.',
+    images: ['https://www.prioritybicycles.com/cdn/shop/products/main_s16.jpg?v=1663092769']
   },
   {
     id: 13,
@@ -141,7 +152,8 @@ const bikeInventory = [
     year: 2023,
     inStock: false,
     size: 'l',
-    description: 'An elite road racing machine with cutting-edge aerodynamics and a lightweight frame for maximum performance.'
+    description: 'An elite road racing machine with cutting-edge aerodynamics and a lightweight frame for maximum performance.',
+    images: ['https://www.prioritybicycles.com/cdn/shop/products/main_s16.jpg?v=1663092769']
   },
   {
     id: 14,
@@ -152,7 +164,8 @@ const bikeInventory = [
     year: 2022,
     inStock: true,
     size: 'm',
-    description: 'A professional-grade road bike built for speed and precision with top-tier components and exceptional handling.'
+    description: 'A professional-grade road bike built for speed and precision with top-tier components and exceptional handling.',
+    images: ['https://www.prioritybicycles.com/cdn/shop/products/main_s16.jpg?v=1663092769']
   },
   {
     id: 15,
@@ -163,7 +176,8 @@ const bikeInventory = [
     year: 2021,
     inStock: true,
     size: 'l',
-    description: 'A rugged mountain bike for enduro riders, offering excellent control and responsiveness on technical descents.'
+    description: 'A rugged mountain bike for enduro riders, offering excellent control and responsiveness on technical descents.',
+    images: ['https://www.prioritybicycles.com/cdn/shop/products/main_s16.jpg?v=1663092769']
   },
   {
     id: 16,
@@ -174,7 +188,8 @@ const bikeInventory = [
     year: 2022,
     inStock: true,
     size: 's',
-    description: 'A versatile cyclocross bike designed for both racing and off-road adventures, built to handle mud and rough terrain.'
+    description: 'A versatile cyclocross bike designed for both racing and off-road adventures, built to handle mud and rough terrain.',
+    images: ['https://www.prioritybicycles.com/cdn/shop/products/main_s16.jpg?v=1663092769']
   },
   {
     id: 17,
@@ -185,7 +200,8 @@ const bikeInventory = [
     year: 2021,
     inStock: true,
     size: 'm',
-    description: 'A steel gravel bike that’s as tough as it is comfortable, perfect for bikepacking and gravel touring.'
+    description: 'A steel gravel bike that’s as tough as it is comfortable, perfect for bikepacking and gravel touring.',
+    images: ['https://www.prioritybicycles.com/cdn/shop/products/main_s16.jpg?v=1663092769']
   },
   {
     id: 18,
@@ -196,33 +212,9 @@ const bikeInventory = [
     year: 2020,
     inStock: true,
     size: 'l',
-    description: 'A versatile gravel bike built for long-distance riding and mixed terrain, with stable handling and ample tire clearance.'
-  },
-  {
-    id: 19,
-    brand: 'Diamondback',
-    model: 'Haanjo 7C Carbon',
-    type: 'Gravel',
-    price: 2100,
-    year: 2023,
-    inStock: false,
-    size: 's',
-    description: 'A lightweight carbon gravel bike designed for speed and comfort on any type of terrain, perfect for gravel racing.'
-  },
-  {
-    id: 20,
-    brand: 'Ghost',
-    model: 'Lector SF',
-    type: 'Mountain',
-    price: 4000,
-    year: 2023,
-    inStock: true,
-    size: 'm',
-    description: 'A carbon hardtail mountain bike that’s agile and fast, built for technical climbs and demanding trails.'
+    description: 'A versatile gravel bike built for long-distance riding and mixed terrain, with stable handling and ample tire clearance.',
+    images: ['https://www.prioritybicycles.com/cdn/shop/products/main_s16.jpg?v=1663092769']
   }
-];
+]
 
-
-  
 export default bikeInventory;
-  

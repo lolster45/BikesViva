@@ -1,5 +1,3 @@
-
-
 .sidebar {
     position: sticky;
     top: 0px;
@@ -15,9 +13,11 @@
         height: 80%;
         width: 85%;
         overflow-y: auto;
-        scrollbar-width: none; /* For Firefox */
+        scrollbar-width: none;
+        /* For Firefox */
         &::-webkit-scrollbar {
-            display: none; /* Hides the scrollbar */
+            display: none;
+            /* Hides the scrollbar */
         }
         .filter-category {
             position: relative;
@@ -29,7 +29,7 @@
             width: 100%;
             border-bottom: 2px solid rgb(43, 43, 43);
             color: white;
-            > h4 {
+            >h4 {
                 cursor: pointer;
                 display: flex;
                 align-items: center;
@@ -39,47 +39,32 @@
                 padding: 0px 20px;
                 width: 100%;
                 font-size: 0.9rem;
-                //background-color: red;
-    
                 svg {
                     color: white;
                 }
             }
-    
             .filter-options {
                 position: relative;
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
                 justify-items: center;
-
                 height: auto;
                 width: 100%;
-    
                 label {
                     display: flex;
                     justify-content: flex-start;
                     align-items: center;
-    
                     width: 90%;
-    
                     height: 40px;
                     margin-bottom: 10px;
-
                     font-size: 0.8rem;
-
-    
-                    > input {
+                    >input {
                         margin-right: 5px;
-    
-                        
                     }
                 }
             }
         }
     }
-
-
-
     .mobile-buttons {
         display: none;
         align-items: center;
@@ -95,13 +80,10 @@
             height: 45px;
             width: 45%;
             font-weight: bolder;
-            
-
             &:first-of-type {
                 color: black;
                 background-color: white;
             }
-
             &:last-of-type {
                 color: white;
                 background-color: rgb(21, 21, 21);
@@ -113,7 +95,6 @@
         width: 20%;
     }
 }
-
 
 @media only screen and (max-width: 999px) {
     .sidebar {

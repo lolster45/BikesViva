@@ -16,7 +16,6 @@ const MobileNav = ({mobileNav, setMobileNav, setMobileMotion}) => {
         setMobileMotion(false)
     }
 
-
     return (
         <div    
             className={`black-overlay-mobile ${mobileNav ? "active" : ""}`} 

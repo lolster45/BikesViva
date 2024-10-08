@@ -10,15 +10,28 @@ import bikeInventory from '../Bikes';
 //React icons...
 import { IoFilterSharp } from "react-icons/io5";
 
+//Firebase...
+import { collection, getDocs } from 'firebase/firestore';
+import { database } from '../firebase';
+
 
 //Styles...
 import '../styles/Inventory.scss'
 import SidebarFilters from '../components/SidebarFilters';
 
 
+import LoadingCard from '../components/LoadingSheanComponents/LoadingCard';
+
 const Inventory = () => {
 
-    const [filteredItems, setFilteredItems] = useState([...bikeInventory]);
+    //State holding the bike inventory with filters placed by user...
+    const [filteredItems, setFilteredItems] = useState([]);
+
+    //Holds the original inventory without filters for reference...
+    const [originalInventory, setOriginalInventory] = useState([])
+
+    //loading state for showing the loading animations...
+    const [loading, setLoading] = useState(true);
 
     //Determines if sidebar filters are active/showing on page...
     const [activeSide, setActiveSide] = useState(true);
@@ -34,36 +47,42 @@ const Inventory = () => {
     //Filters for main data...
     const filters = {
         brands: [
-            'Trek',
-            'Specialized',
-            'Cannondale',
-            'Giant',
-            'Santa Cruz',
-            'Yeti',
-            'Scott',
-            'Canyon',
-            'Bianchi',
-            'Orbea',
-            'Cube',
-            'Merida',
-            'Pinarello',
-            'Cervelo',
-            'Kona',
-            'Fuji',
-            'Surly',
-            'Raleigh',
-            'Diamondback',
-            'Ghost'
+            'Husky',
+            'MODEL X',
+            "Buffer",
+            "loco",
+            "Bruh"
         ],
         types: [
-            'Road',
-            'Mountain',
-            'Electric Mountain',
-            'Cyclocross',
-            'Gravel'
+            'mountain',
+            'road',
+            'hybrid',
+            'bmx',
+            'cruiser',
+            'electric',
+            'kids',
+            'tandem',
+            'folding',
         ],
-        sizes: ['s', 'm', 'l'],
+        sizes: ['small', 'medium', 'large'],
     };
+
+    const getBikesInventory = async () => {
+        const bikesCollection = collection(database, 'bikesInventory');
+
+        const bikesSnapshot = await getDocs(bikesCollection);
+
+        const bikesList = bikesSnapshot.docs.map(doc => ({ ...doc.data() }));
+        setLoading(false)
+        setFilteredItems(bikesList);
+        setOriginalInventory(bikesList);
+
+        //setFilteredItems(bikeInventory)
+    }
+
+    useEffect(() => {
+       getBikesInventory()
+    }, [])
 
 
     useEffect(() => {
@@ -103,7 +122,6 @@ const Inventory = () => {
 
 
     const handleFilterChange = (name, value) => {
-        // Track all active filters in state
         setSideFilter(value);            
         setSelectedFilters(prev => ({
             ...prev,
@@ -114,7 +132,7 @@ const Inventory = () => {
 
     useEffect(() => {
         // Create a copy of the bike inventory to apply filters cumulatively
-        let filtered = bikeInventory;
+        let filtered = originalInventory;
 
         // Apply all filters based on currently selected values
         if (selectedFilters.brands) {
@@ -127,19 +145,17 @@ const Inventory = () => {
           filtered = filtered.filter((product) => product.size === selectedFilters.sizes);
         }
 
-        
         // Set the filtered items
         setFilteredItems(filtered);
 
 
     }, [selectedFilters])
-    
 
+
+   
     return (
         <div className='inventory-page'>
-            
             <h1>Inventory</h1>
-
             <div className="input-container">
 
                 <div className='filter-info'>Type: {sideFilter || ''} ({filteredItems.length})</div>
@@ -155,7 +171,6 @@ const Inventory = () => {
                 </div>
                     
             </div>
-
             <div className='inventory-bottom'>
                 <SidebarFilters 
                     filters={filters} 
@@ -164,14 +179,25 @@ const Inventory = () => {
                     setActiveSide={setActiveSide}
                 />
                 <div className='inventory-container'>
+                    {//Loading shean to show UI loading...
+                        !filteredItems.length && loading &&
+                        <>
+                            <LoadingCard/>
+                            <LoadingCard/>
+                            <LoadingCard/>
+                            <LoadingCard/>
+                            <LoadingCard/>
+                            <LoadingCard/>             
+                        </>
+                    }
                     {
                         filteredItems.map(bike => {
                             return (
                                 <div key={bike.id} className="card">
-                                    <img src="/bikeImage.jpg" alt="" />
+                                    <img src={bike.images[0]} alt="" />
                                     <div className='card-bottom'>
                                         <div className='brand'>{bike.brand}</div>
-                                        <Link to={`/inventory/${bike.id}`}>
+                                        <Link to={`/inventory/${bike.id}`} onClick={() => setBikeDetail(bike)}>
                                             <h2 className='model'>{bike.model}</h2>
                                         </Link>
                                         <div className='type'>{bike.type}</div>
@@ -181,23 +207,16 @@ const Inventory = () => {
                             )
                         })
 
+                    } 
+                    {//Dispalys to the user that their search has given zero results...
+                        !loading && !filteredItems.length &&
+
+                        <h2>No Results...</h2>
                     }
                 </div>
-
-
             </div>
-
-
-
         </div>
     );
 };
 
 export default Inventory;
-
-
-  {/* <input 
-                    type="text"  
-                    placeholder='Search...'
-                    onChange={handleInputChange}
-                /> */}

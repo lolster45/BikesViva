@@ -1,14 +1,15 @@
 //React...
 import React, {useState, useEffect} from 'react';
 
-//EmailJS...
-import { sendForm } from '@emailjs/browser';
-
 //React router...
 import { useLocation } from 'react-router-dom';
 
-//Data...
-import bikeInventory from '../Bikes';
+//EmailJS...
+import { sendForm } from '@emailjs/browser';
+
+//Firebase...
+import { collection, query, getDocs, where } from 'firebase/firestore';
+import { database } from '../firebase';
 
 //Styles...
 import '../styles/MoreInfo.scss'
@@ -17,9 +18,15 @@ const MoreInfoPage = () => {
 
     const location = useLocation();
 
+    //The bike object itself in state...
+    const [product, setProduct] = useState({});
 
-    const [product, setProduct] = useState({})
+    const [loading, setLoading] = useState('Request Bike!');
 
+    //The leftmost biggest image of the product...
+    const [mainImage, setMainImage] = useState(null)
+
+    //State holdings the users info when they input it...
     const [requestForm, setRequestForm] = useState({
         requested_date: new Date().toLocaleDateString(),
         from_name: '',
@@ -29,14 +36,26 @@ const MoreInfoPage = () => {
     })
 
 
-    const getProductDetails = () => {
+    const getProductDetails = async () => {
         const productId = location.pathname.split("/")[2];
-        let bikeObj = bikeInventory.filter(item => item.id === Number(productId));
-        setProduct(...bikeObj)
-        setRequestForm(prev => ({
-            ...prev,
-            bike_model: bikeObj[0].model
-        }))
+
+        try {
+            const bikesCollectionRef = collection(database, 'bikesInventory');
+            const q = query(bikesCollectionRef, where('id', '==', Number(productId)));
+            const querySnapshot = await getDocs(q);
+          
+            if (!querySnapshot.empty) {
+              setProduct(querySnapshot.docs[0].data())
+              setMainImage(querySnapshot.docs[0].data().images[0])
+            } 
+            else {
+              console.log('No bike found with the given id field');
+              return null;
+            }
+        } 
+        catch (error) {
+            console.error('Error fetching bike by id field:', error);
+        }
     }
 
 
@@ -50,21 +69,32 @@ const MoreInfoPage = () => {
 
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
+        e.preventDefault();  
 
-        console.log("starting...")
-  
+        setLoading('Sending...')
+
         if(requestForm.from_email && requestForm.from_name && requestForm.from_message) {
   
-            sendEmail(e);
-            setRequestForm({
-                requested_date: new Date().toLocaleDateString(),
-                from_name: '',
-                from_email: '',
-                from_message: '',
-                bike_model: product.model
-            });
+            try {
+                sendEmail(e);
+                setLoading('Sent!')
+                setRequestForm({
+                    requested_date: new Date().toLocaleDateString(),
+                    from_name: '',
+                    from_email: '',
+                    from_message: '',
+                    bike_model: product.model
+                }); 
+            } 
+            catch (error) {
+                setLoading('Error!')
+                console.log("error sending request for bike", error)
+            }
         }
+
+        setTimeout(() => {
+            setLoading('Request Bike')
+        }, 8000)
     };
 
     const sendEmail = async (e) => {
@@ -84,6 +114,11 @@ const MoreInfoPage = () => {
     };
 
 
+    const handleImageClick = (image) => {
+        setMainImage(image)
+    }
+
+
     useEffect(() => {
         getProductDetails()
     }, [])
@@ -92,7 +127,28 @@ const MoreInfoPage = () => {
 
     return (
         <div className='moreInfo-page'>
-            <img src="https://preview.redd.it/i-got-bored-so-i-decided-to-draw-a-random-image-on-the-v0-4ig97vv85vjb1.png?width=640&crop=smart&auto=webp&s=22ed6cc79cba3013b84967f32726d087e539b699" alt="" />
+            <div className="image-holder">
+                <div className="main-image-holder">
+                    {mainImage &&
+                        <img src={mainImage} alt="" />
+                    }
+                </div>
+                <div className="thumbnail-holders">
+                    {product.images && 
+                        product.images.map((img, i) => {
+                            return (
+                                <img 
+                                    key={i}
+                                    src={img}
+                                    onClick={() => handleImageClick(img)}
+                                    alt="image of bike product" 
+                                />
+                            )
+                        })
+                    }
+                  
+                </div>
+            </div>
             <div className='product-info-wrap'>
                 <h1>{product.model}</h1>
                 <p>{product.description}</p>
@@ -124,9 +180,11 @@ const MoreInfoPage = () => {
                         placeholder='Message'
                     >              
                     </textarea>
-                    <button>Request bike</button>
+                    <button>
+                        {loading}
+                    </button>
                 </form>
-            </div>
+            </div> 
         </div>
     );
 };
