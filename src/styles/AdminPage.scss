@@ -202,13 +202,32 @@
                 select {
                     margin-top: 10px;
                 }
-                &.file-chooser {
-                    background-color: transparent;
 
-                    input {
-                        cursor: pointer;
-                        width: 200px;
-                        background-color: transparent;
+                &.file-chooser {
+                    cursor: pointer;
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 0.8rem;
+                    color: white;
+                    border: 1px solid rgb(95, 95, 95);
+                    height: 50px;
+                    width: 180px;
+                    &:hover {
+                        color: var(--gold-yellow);
+                        border-color: var(--gold-yellow);
+                    }
+
+                    input[type='file'] {
+                        display: none;
+                    }
+
+                    span {
+                        position: absolute;
+                        right: -240px;
+                        font-weight: bold;
+                        color: red;
                     }
                 }
             }
@@ -223,17 +242,19 @@
             }
         }
         .preview-images {
+            position: relative;
             display: flex;
             align-items: flex-start;
             flex-wrap: wrap;
             padding: 10px;
             width: 50%;
 
-            background-color: #231356;
+            background-color: #1D1047;
 
             img {
-                height: 100px;
-                width: 150px;
+                margin-bottom: 20px;
+                height: 200px;
+                width: 100%;
                 object-fit: cover;
             }
         }

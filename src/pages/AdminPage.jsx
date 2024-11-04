@@ -19,6 +19,10 @@ const AdminPage = () => {
 
     const [user] = useAuthState(auth)
 
+
+    //Error states...
+    const [imageError, setImageError] = useState('');
+
     //Overlay displaying if you want to delete the bicycle selected...
     const [overlay, setOverlay] = useState(false);
 
@@ -82,9 +86,14 @@ const AdminPage = () => {
     const handleUpload = async (e) => {
         e.preventDefault();
 
+        if(filesToUpload.length === 0) {
+            setImageError('You must upload atleast 1 image');
+            return;
+        }
+
         const urls = [];
 
-        if(bikeForm.model && bikeForm.description && bikeForm.size && bikeForm.year && bikeForm.type) {
+        if(bikeForm.model && bikeForm.description && bikeForm.size && bikeForm.year && bikeForm.type && filesToUpload.length >= 1) {
 
             try {
                 // Loop through each file
@@ -126,8 +135,8 @@ const AdminPage = () => {
 
                 //Resets the preview images...
                 setSelectedImages([])
+                setImageError('')
     
-                console.log('Files uploaded successfully:', urls);
             } 
             catch (error) {
                 console.error('Error uploading files:', error);
@@ -135,8 +144,6 @@ const AdminPage = () => {
 
 
         }
-
-
     };
 
 
@@ -205,6 +212,7 @@ const AdminPage = () => {
                             multiple 
                             onChange={handleImageChange} 
                         />
+                        <span>{imageError}</span>
                     </label>
                     <label>
                         Brand:
@@ -272,9 +280,13 @@ const AdminPage = () => {
                             onChange={handleFormChange}
                         >
                             <option value="" disabled>Select size</option>
-                            <option value="small">Small</option>
-                            <option value="medium">Medium</option>
-                            <option value="large">Large</option>
+                            <option value="12">12"</option>
+                            <option value="14">14"</option>
+                            <option value="16">16"</option>
+                            <option value="18">18"</option>
+                            <option value="20">20"</option>
+                            <option value="24">24"</option>
+                            <option value="26">26"</option>
                         </select>
                     </label>
                     <button type="submit">Submit</button>
