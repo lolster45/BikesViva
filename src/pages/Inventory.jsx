@@ -46,13 +46,6 @@ const Inventory = () => {
 
     //Filters for main data...
     const filters = {
-        brands: [
-            'Husky',
-            'MODEL X',
-            "Buffer",
-            "loco",
-            "Bruh"
-        ],
         types: [
             'mountain',
             'road',
@@ -62,9 +55,9 @@ const Inventory = () => {
             'electric',
             'kids',
             'tandem',
-            'folding',
+            'folding', 
         ],
-        sizes: ['small', 'medium', 'large'],
+        sizes: ['12', '14', '16', '18', '20', '24', '26'],
     };
 
     const getBikesInventory = async () => {
@@ -135,9 +128,6 @@ const Inventory = () => {
         let filtered = originalInventory;
 
         // Apply all filters based on currently selected values
-        if (selectedFilters.brands) {
-          filtered = filtered.filter((product) => product.brand === selectedFilters.brands);
-        }
         if (selectedFilters.types) {
           filtered = filtered.filter((product) => product.type === selectedFilters.types);
         }
@@ -197,12 +187,20 @@ const Inventory = () => {
                                     <img src={bike.images[0]} alt="" />
                                     <div className='card-bottom'>
                                         <div className='brand'>{bike.brand}</div>
-                                        <Link to={`/inventory/${bike.id}`} onClick={() => setBikeDetail(bike)}>
-                                            <h2 className='model'>{bike.model}</h2>
+                                        <Link 
+                                            to={`/inventory${!bike.soldStatus ? `/${bike.id}` : ''}`} 
+                                            //onClick={() => setBikeDetail(bike)}
+                                        >
+                                            <h2 className='model'>{bike.model.substring(0, 15)}</h2>
                                         </Link>
                                         <div className='type'>{bike.type}</div>
                                         <span className='year'>{bike.year}</span>
                                     </div>
+                                    {bike.soldStatus &&
+                                        <div className="sold-overlay">
+                                            <h2>SOLD</h2>
+                                        </div>
+                                    }
                                 </div>
                             )
                         })

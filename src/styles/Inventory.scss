@@ -84,7 +84,11 @@
     .inventory-bottom {
         position: relative;
         display: flex;
-        width: 100%;
+        width: 95%;
+
+        //background-color: green;
+
+
         .inventory-container {
             display: grid;
             grid-template-columns: repeat(auto-fit,  minmax(260px, 1fr));
@@ -94,16 +98,23 @@
             width: 100%;
             transition: width 0.3s ease;
             padding: 10px;
+
+
+
             .card {
                 cursor: pointer;
                 position: relative;
                 height: 330px;
-                min-width: 250px;
-                max-width: 300px;
+                //min-width: 260px;
+                max-width: 260px;
+
+                width: 100%;
+
+
                 color: black;
                 background-color: #1e104b;
                 img {
-                    min-height: 65%;
+                    min-height: 70%;
                     max-height: 70%;
                     width: 100%;
                     object-fit: cover;
@@ -141,7 +152,26 @@
                         color: inherit;
                     }
                 }
+
+                .sold-overlay {
+                    position: absolute;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    top: 0px;
+                    bottom: 0px;
+                    height: 102%;
+                    width: 100%;
+                    background-color: rgba(0, 0, 0, 0.678);
+                    h2 {
+                        cursor: default;
+                        letter-spacing: 10px;
+                        color: white;
+                    }
+                }
             }
+
+
             > h2 {
                 font-size: 0.9rem;
                 color: rgb(92, 92, 92);
@@ -192,22 +222,26 @@
         }
     }
 }
-@media only screen and (max-width: 560px) {
+
+
+@media only screen and (max-width: 595px) {
     .inventory-page {
         .inventory-bottom {
             .inventory-container {
-                grid-template-columns: repeat(auto-fit,  minmax(180px, 1fr));
+                padding: 0;
+                column-gap: 10px;
+                grid-template-columns: repeat(auto-fit,  minmax(190px, 1fr));
                 .card {
-                    height: auto;
-                    min-width: 100%;
+                    height: 250px;
+                    width: 100%;
                     img {
-                        height: 60%;
+                        height: 50%;
                         width: 100%;
                         object-fit: cover;
                     }
                     .card-bottom {
                         padding-bottom: 10px;
-                        height: 40%;
+                        height: 30%;
                         .price {
                            color: inherit;
                         }
@@ -219,3 +253,38 @@
         }
     }
 }
+
+
+
+
+
+
+
+
+// @media only screen and (max-width: 560px) {
+//     .inventory-page {
+//         .inventory-bottom {
+//             .inventory-container {
+//                 grid-template-columns: repeat(auto-fit,  minmax(180px, 1fr));
+//                 .card {
+//                     height: auto;
+//                     min-width: 100%;
+//                     img {
+//                         height: 60%;
+//                         width: 100%;
+//                         object-fit: cover;
+//                     }
+//                     .card-bottom {
+//                         padding-bottom: 10px;
+//                         height: 40%;
+//                         .price {
+//                            color: inherit;
+//                         }
+             
+//                     }
+//                 }
+
+//             }
+//         }
+//     }
+// }
