@@ -20,6 +20,9 @@
     height: 100vh;
     width: 100%;
     background-color: var(--background-purple);
+
+
+	background-image: linear-gradient(to bottom, #0f0825, #100a32, #100b40, #13094d, #19045a);
     &.visible {
         opacity: 1;
     }
@@ -35,7 +38,7 @@
 	width: 16em;
 	height: auto;
 
-    background-color: var(--background-purple);
+    //background-color: var(--background-purple);
 }
 .bike__body,
 .bike__front,
@@ -46,7 +49,7 @@
 .bike__spokes,
 .bike__spokes-spin,
 .bike__tire {
-	animation: bikeBody 0.5s ease-in-out infinite;
+	animation: bikeBody 1s ease-in-out infinite;
 	stroke: white;
 	transition: stroke var(--trans-dur);
 }

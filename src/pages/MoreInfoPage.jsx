@@ -140,6 +140,7 @@ const MoreInfoPage = () => {
                                 <img 
                                     key={i}
                                     src={img}
+                                    style={ img === mainImage ? { border: '2px solid white'} : null }
                                     onClick={() => handleImageClick(img)}
                                     alt="image of bike product" 
                                 />

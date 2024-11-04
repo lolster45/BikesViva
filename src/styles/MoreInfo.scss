@@ -8,12 +8,18 @@
     height: auto;
     width: 100%;
     gap: 40px;
+
+    //background-color: red;
+
     .image-holder {
         position: relative;
-        width: 45%;
+        width: 40%;
         .main-image-holder {
+            position: relative;
+            height: 450px;
+            width: 100%;
             img {
-                height: auto;
+                height: 100%;
                 width: 100%;
                 object-fit: cover;
             }

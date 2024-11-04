@@ -3,17 +3,21 @@
     top: 0px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     height: 100vh;
     width: 0px;
     padding-top: 20px;
     opacity: 0;
     transition: width 0.3s ease, opacity 0.3s ease-in;
+
+    //background-color: red;
     .scroll-wrap {
         height: 80%;
-        width: 85%;
+        width: 90%;
         overflow-y: auto;
         scrollbar-width: none;
+
+        //background-color: brown;
         /* For Firefox */
         &::-webkit-scrollbar {
             display: none;
@@ -27,8 +31,10 @@
             justify-content: center;
             min-height: 50px;
             width: 100%;
-            border-bottom: 2px solid rgb(43, 43, 43);
+            border-bottom: 1px solid rgb(66, 66, 66);
             color: white;
+
+            //background-color: blue;
             >h4 {
                 cursor: pointer;
                 display: flex;

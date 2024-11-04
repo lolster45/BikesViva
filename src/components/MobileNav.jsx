@@ -8,10 +8,11 @@ import {Link} from 'react-router-dom'
 import '../styles/MobileNav.scss'
 
 
-const MobileNav = ({mobileNav, setMobileNav, setMobileMotion}) => {
+const MobileNav = ({mobileNav, setMobileNav, setMobileMotion, handleTransition}) => {
 
 
     const handleNavClick = () => {
+        handleTransition()
         setMobileNav(prev => !prev)
         setMobileMotion(false)
     }

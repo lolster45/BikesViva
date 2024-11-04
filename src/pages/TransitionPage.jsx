@@ -4,13 +4,12 @@ import React, { useState, useEffect } from 'react';
 //Styles...
 import '../styles/TransitionPage.scss'
 
-const TransitionPage = () => {
+const TransitionPage = ({loading, setLoading}) => {
 
-    const [show, setShow] = useState(true);
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            setShow(false);
+            setLoading(false);
           }, 2000); // Show for 2 seconds
       
         return () => clearTimeout(timer);
@@ -18,7 +17,7 @@ const TransitionPage = () => {
 
 
     return (
-        <div className={`transition-page ${show ? 'visible' : 'hidden'}`}>
+        <div className={`transition-page ${loading ? 'visible' : 'hidden'}`}>
             <svg className="bike" viewBox="0 0 48 30" width="48px" height="30px">
                 <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1">
                     <g transform="translate(9.5,19)">
