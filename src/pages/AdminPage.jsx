@@ -30,7 +30,6 @@ const AdminPage = () => {
     //State that holds the info that the client want to insert into database...
     const [bikeForm, setBikeForm] = useState({
         id: Math.floor(Math.random() * 100000),
-        brand: '',
         model: '',
         type: '',
         year: '',
@@ -82,6 +81,8 @@ const AdminPage = () => {
     }
 
 
+    const [progress, setProgress] = useState('Submit');
+
       // Handle file upload
     const handleUpload = async (e) => {
         e.preventDefault();
@@ -96,6 +97,7 @@ const AdminPage = () => {
         if(bikeForm.model && bikeForm.description && bikeForm.size && bikeForm.year && bikeForm.type && filesToUpload.length >= 1) {
 
             try {
+                setProgress("Uploading...")
                 // Loop through each file
                 for (let i = 0; i < filesToUpload.length; i++) {
                     const file = filesToUpload[i];
@@ -113,7 +115,6 @@ const AdminPage = () => {
                 await addDoc(collection(database, 'bikesInventory'), {
                     id: Math.floor(Math.random() * 100000),
                     images: urls,
-                    brand: bikeForm.brand,
                     model: bikeForm.model,
                     type: bikeForm.type,
                     year: bikeForm.year,
@@ -125,10 +126,9 @@ const AdminPage = () => {
                 //Resets the add bike form...
                 setBikeForm({
                     id: Math.floor(Math.random() * 100000),
-                    brand: '',
                     model: '',
                     type: '',
-                    year: null,
+                    year: '',
                     size: '',
                     description: ''
                 })
@@ -136,6 +136,10 @@ const AdminPage = () => {
                 //Resets the preview images...
                 setSelectedImages([])
                 setImageError('')
+                setProgress('Done!')
+                setTimeout(() => {
+                    setProgress("Submit")
+                }, 5000)
     
             } 
             catch (error) {
@@ -215,15 +219,6 @@ const AdminPage = () => {
                         <span>{imageError}</span>
                     </label>
                     <label>
-                        Brand:
-                        <input 
-                            name='brand'
-                            value={bikeForm.brand}
-                            onChange={handleFormChange}
-                            type="text"
-                        />
-                    </label>
-                    <label>
                         Name:
                         <input 
                             name='model'
@@ -287,9 +282,10 @@ const AdminPage = () => {
                             <option value="20">20"</option>
                             <option value="24">24"</option>
                             <option value="26">26"</option>
+                            <option value="29">29"</option>
                         </select>
                     </label>
-                    <button type="submit">Submit</button>
+                    <button type="submit">{progress}</button>
                 </form>
                 <div className="preview-images">
                     {

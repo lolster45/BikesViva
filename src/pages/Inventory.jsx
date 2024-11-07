@@ -57,7 +57,7 @@ const Inventory = () => {
             'tandem',
             'folding', 
         ],
-        sizes: ['12', '14', '16', '18', '20', '24', '26'],
+        sizes: ['12', '14', '16', '18', '20', '24', '26', '29'],
     };
 
     const getBikesInventory = async () => {
