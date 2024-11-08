@@ -11,19 +11,11 @@ import 'slick-carousel/slick/slick-theme.css';
 //React observer...
 import { useInView } from 'react-intersection-observer';
 
-//Firebase...
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth } from '../firebase';
-
 //Styles... 
 import '../styles/Home.scss'
 
 
-
-
 const Home = () => {
-
-    const [user] = useAuthState(auth)
 
     const settings = {
         dots: true,
